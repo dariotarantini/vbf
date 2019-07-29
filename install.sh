@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 wget https://raw.githubusercontent.com/vpervenditti/vbf/master/src/vbf.v
 v -prod vbf.v
-sudo mv vbf /usr/local/bin/vbf
+mv vbf /usr/local/bin/vbf
 rm vbf.v
 echo Done!
 exit
