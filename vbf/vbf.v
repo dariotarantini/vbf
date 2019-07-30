@@ -110,7 +110,7 @@ fn vebf(input []Instruction, var_type int){
 fn main(){
     _args := parse(os.args, 1)
     if _args.command == 'help' {
-        println('vbf - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - num\tUse number as input/output type (default: string)\n- help\tShow this message')
+        println('vbf 0.3 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - num\tUse number as input/output type (default: string)\n- help\tShow this message')
     }else if _args.command == 'runs' || _args.command == 'run' {
         code := os.read_file(_args.unknown[0]) or {
 		    panic('File not found')
