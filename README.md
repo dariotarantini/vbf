@@ -7,8 +7,8 @@ A brainfuck interpreter written in V.
     2. Run:
         `sudo mv [path to vbf repo]/vbf /usr/local/bin/vbf`
 * Install from sources  
-Just run this script:  
-`curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
+    Just run this script:  
+        `curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
 ## Usage
 ```
 vbf - simple brainfuck interpreter
