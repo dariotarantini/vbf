@@ -1,4 +1,5 @@
-import args
+module main
+
 import os
 
 struct Instruction {
@@ -66,7 +67,7 @@ fn vcbf(input string) []Instruction {
     return output
 }
 
-fn vebf(input []Instruction){
+fn vebf(input []Instruction, var_type int){
 	mut data := [0 ; data_size]
 	mut data_ptr := 0
 	for pc := 0; pc < (input.len); pc++ {
@@ -79,10 +80,18 @@ fn vebf(input []Instruction){
         }else if input[pc].operator == op_dec_val {
             data[data_ptr]--
         }else if input[pc].operator == op_out {
-            C.printf('%c', data[data_ptr])
+            if var_type == 0 {
+                C.printf('%c', data[data_ptr])
+            }else if var_type == 1 {
+                C.printf('%d', data[data_ptr])
+            }
         }else if input[pc].operator == op_in {
             cb := 0
-            C.scanf('%c', &cb)
+            if var_type == 0 {
+                C.scanf('%c', &cb)
+            }else if var_type == 1 {
+                C.scanf('%d', &cb)
+            }
             data[data_ptr] = cb
         }else if input[pc].operator == op_jmp_fwd {
 			if data[data_ptr] == 0 {
@@ -99,16 +108,23 @@ fn vebf(input []Instruction){
 }
 
 fn main(){
-    _args := args.parse(os.args, 1)
+    _args := parse(os.args, 1)
     if _args.command == 'help' {
-        println('vbf - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - help\tShow this message')
-    }else if _args.command == 'run' {
+        println('vbf - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - num\tUse number as input/output type (default: string)\n- help\tShow this message')
+    }else if _args.command == 'runs' || _args.command == 'run' {
         code := os.read_file(_args.unknown[0]) or {
 		    panic('File not found')
             return
         }
         c := vcbf(code)
-        vebf(c)
+        vebf(c, 0)
+    }else if _args.command == 'runi' {
+        code := os.read_file(_args.unknown[0]) or {
+		    panic('File not found')
+            return
+        }
+        c := vcbf(code)
+        vebf(c, 1)
     }else{
         println('Wrong command!')
     }

@@ -1,0 +1,14 @@
++++          input |num|
+[            while |num| is non-zero
+
+  [             until |num| is zero
+    >+>+          increment |temp| and |total|
+    <<            return to |num|
+    -             decrement |num|
+  ]
+  >-           goto |temp|, decrement
+  [<+>-]       until |temp| is zero; decrement |temp|; increment |num|
+
+  <           goto |num|
+]
+>>.          goto |total|, output it
