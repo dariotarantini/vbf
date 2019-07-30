@@ -1,3 +1,4 @@
+```
 A universal Turing machine from Yurii Rogozhin's article "Small universal
 Turing machines", in Theoretical Computer Science, 168(2):215-240, 20 November
 1996. Thus, a very direct proof that brainfuck is Turing-complete. For i/o
@@ -6,8 +7,7 @@ formats and so on, read below; for fuller detail, dig up the article.
 If you just want a quick and complete test case, the input b1b1bbb1c1c11111d
 should produce the output 1c11111.
 
-Daniel B Cristofani (cristofdathevanetdotcom)
-http://www.hevanet.com/cristofd/brainfuck/
+Daniel B Cristofani cristofdathevanetdotcom http://www.hevanet.com/cristofd/brainfuck/
 
 
 
@@ -457,3 +457,4 @@ where each x is either 50 (for "1") or 100 (for "c").
 Now we scan right, reducing each cell by one and outputting it; the values are
 49 (ASCII for "1"), 99 (ASCII for "c"), and 10 (ASCII for the final linefeed).
 After this loop there are no more commands, so the program terminates.
+```
