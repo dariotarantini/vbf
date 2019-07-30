@@ -6,7 +6,7 @@ A brainfuck interpreter written in V.
     1. Download it [here](https://github.com/vpervenditti/vbf/releases)
     2. Run:
         `sudo mv [path to vbf repo]/vbf /usr/local/bin/vbf`
-* Install from sources
+* Install from sources  
 Just run this script:  
 `curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
 ## Usage
