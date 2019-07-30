@@ -11,10 +11,11 @@ A brainfuck interpreter written in V.
         `curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
 ## Usage
 ```
-vbf - simple brainfuck interpreter
+vbf 0.3 - simple brainfuck interpreter
 Usage: vbf [options] [file]
 
 Options:
- - run  Run a brainfuck script
- - help Show this message
+ - run	Run a brainfuck script (using string types)
+ - runi	Run a brainfuck script (using int types)
+ - help	Show this message
 ```
