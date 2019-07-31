@@ -1,13 +1,6 @@
 # vbf
 A brainfuck interpreter/compiler written in V.
 ## Installation
-### Linux, macOS, Windows, *BSD, WSL, Android, Raspbian
-```
-git clone https://github.com/vpervenditti/vbf
-cd vbf
-v -prod 
-```
-
 Okay, you need:  
     1. V compiler  
     2. Git  
