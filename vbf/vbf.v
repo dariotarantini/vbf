@@ -98,11 +98,37 @@ fn vebf(input []Instruction){
         }
 	}
 }
-
+fn vbbf(input []Instruction) string {
+    mut output := ''
+    output += '#include <stdio.h>\nint main(){char array[$data_size]={0};char *ptr=array;'
+	for pc := 0; pc < (input.len); pc++ {
+		if input[pc].operator == op_inc_dp {
+            output += '++ptr;'
+        }else if input[pc].operator == op_dec_dp {
+            output += '--ptr;'
+        }else if input[pc].operator == op_inc_val {
+            output += '++(*ptr);'
+        }else if input[pc].operator == op_dec_val {
+            output += '--(*ptr);'
+        }else if input[pc].operator == op_out {
+            output += 'printf("%c", *ptr);'
+        }else if input[pc].operator == op_in {
+            output += 'scanf("%c", &ptr);'
+        }else if input[pc].operator == op_jmp_fwd {
+            output += 'while(*ptr){'
+        }else if input[pc].operator == op_jmp_bck {
+            output += '}'
+        }else{
+            println('Build error')
+        }
+	}
+    output += ' return 0;}'
+    return output
+}
 fn main(){
     _args := parse(os.args, 1)
     if _args.command == 'help' {
-        println('vbf 0.4 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - help\tShow this message')
+        println('vbf 0.5 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\t\tRun a brainfuck script\n - build\tGenerate a C program from brainfuck that can be compiled\n - help\t\tShow this message')
     }else if _args.command == 'run' {
         code := os.read_file(_args.unknown[0]) or {
 		    println('File not found')
@@ -110,6 +136,19 @@ fn main(){
         }
         c := vcbf(code)
         vebf(c)
+    }else if _args.command == 'build' {
+        code := os.read_file(_args.unknown[0]) or {
+		    println('File not found')
+            return
+        }
+        resp := vbbf(vcbf(code))
+        file := os.create('./'+_args.unknown[0]+'.c') or {
+		    println('Problem while creating the file')
+            return
+        }
+        file.write(resp)
+        file.close()
+        println('Program generated correctly')
     }else{
         println('Wrong command!')
     }
