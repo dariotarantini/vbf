@@ -8,7 +8,7 @@ git clone https://github.com/vpervenditti/vbf
 rm -rf .a.out
 rm -rf /usr/local/bin/vbf
 v -prod ./vbf/vbf/.
-mv a.out /usr/local/bin/vbf
+mv .a.out /usr/local/bin/vbf
 rm -rf vbf
 echo Done!
 exit
