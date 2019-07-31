@@ -10,7 +10,7 @@ If you need V, install it here https://vlang.io
 To install vbf, just run: `curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
 ## Usage
 ```
-vbf 0.5 - simple brainfuck interpreter/builder
+vbf 0.5 - simple brainfuck interpreter/compiler
 Usage: vbf [options] [file]
 
 Options:

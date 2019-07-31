@@ -128,7 +128,7 @@ fn vbbf(input []Instruction) string {
 fn main(){
     _args := parse(os.args, 1)
     if _args.command == 'help' {
-        println('vbf 0.5 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\t\tRun a brainfuck script\n - build\tGenerate a C program from brainfuck that can be compiled\n - help\t\tShow this message')
+        println('vbf 0.5 - simple brainfuck interpreter/compiler\nUsage: vbf [options] [file]\n\nOptions:\n - run\t\tRun a brainfuck script\n - build\tGenerate a C program from brainfuck that can be compiled\n - help\t\tShow this message')
     }else if _args.command == 'run' {
         code := os.read_file(_args.unknown[0]) or {
 		    println('File not found')
