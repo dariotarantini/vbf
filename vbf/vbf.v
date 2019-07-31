@@ -44,7 +44,7 @@ fn vcbf(input string) []Instruction {
             jmp_stack << pc
         }else if mch == ']' {
             if jmp_stack.len == 0 {
-                println('error 1')
+                println('Compiler error')
                 return []Instruction{}
             }
 			jmp_pc = jmp_stack[jmp_stack.len-1]
@@ -61,13 +61,13 @@ fn vcbf(input string) []Instruction {
         pc++
     }
     if jmp_stack.len != 0 {
-	    println('error 2')
+	    println('Something went wrong...')
         return []Instruction{}
 	}
     return output
 }
 
-fn vebf(input []Instruction, var_type int){
+fn vebf(input []Instruction){
 	mut data := [0 ; data_size]
 	mut data_ptr := 0
 	for pc := 0; pc < (input.len); pc++ {
@@ -80,18 +80,10 @@ fn vebf(input []Instruction, var_type int){
         }else if input[pc].operator == op_dec_val {
             data[data_ptr]--
         }else if input[pc].operator == op_out {
-            if var_type == 0 {
-                C.printf('%c', data[data_ptr])
-            }else if var_type == 1 {
-                C.printf('%d', data[data_ptr])
-            }
+            C.printf('%c', data[data_ptr])
         }else if input[pc].operator == op_in {
             cb := 0
-            if var_type == 0 {
-                C.scanf('%c', &cb)
-            }else if var_type == 1 {
-                C.scanf('%d', &cb)
-            }
+            C.scanf('%c', &cb)    
             data[data_ptr] = cb
         }else if input[pc].operator == op_jmp_fwd {
 			if data[data_ptr] == 0 {
@@ -102,7 +94,7 @@ fn vebf(input []Instruction, var_type int){
 				pc = input[pc].operand
 			}
         }else{
-            println('error 3')
+            println('Execution error')
         }
 	}
 }
@@ -110,21 +102,14 @@ fn vebf(input []Instruction, var_type int){
 fn main(){
     _args := parse(os.args, 1)
     if _args.command == 'help' {
-        println('vbf 0.3 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script (using string types)\n - runi\tRun a brainfuck script (using int types)\n - help\tShow this message')
+        println('vbf 0.4 - simple brainfuck interpreter\nUsage: vbf [options] [file]\n\nOptions:\n - run\tRun a brainfuck script\n - help\tShow this message')
     }else if _args.command == 'run' {
         code := os.read_file(_args.unknown[0]) or {
-		    panic('File not found')
+		    println('File not found')
             return
         }
         c := vcbf(code)
-        vebf(c, 0)
-    }else if _args.command == 'runi' {
-        code := os.read_file(_args.unknown[0]) or {
-		    panic('File not found')
-            return
-        }
-        c := vcbf(code)
-        vebf(c, 1)
+        vebf(c)
     }else{
         println('Wrong command!')
     }
