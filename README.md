@@ -1,5 +1,5 @@
 # vbf
-A brainfuck interpreter/compiler written in V.
+A brainfuck interpreter/compiler written in V. 
 ## Installation
 Okay, you need:  
     1. V compiler  
