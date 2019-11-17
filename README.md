@@ -1,13 +1,10 @@
 # vbf
 A brainfuck interpreter/compiler written in V. 
 ## Installation
-Okay, you need:  
-    1. V compiler  
-    2. Git  
-    3. Curl  
-On Ubuntu, you can easy install them using: `sudo apt install git curl -y`  
-If you need V, install it here https://vlang.io  
-To install vbf, just run: `curl https://raw.githubusercontent.com/vpervenditti/vbf/master/install.sh | sudo bash`
+1. Get a V compiler [here](https://vlang.io/)
+2. Clone this repo using `git clone https://github.com/vpervenditti/vbf`
+3. Run `v -prod vbf/vbf/`
+4. Add `vbf` to your path
 ## Usage
 ```
 vbf 0.5 - simple brainfuck interpreter/compiler

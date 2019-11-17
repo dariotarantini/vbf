@@ -38,7 +38,7 @@ fn main(){
         }
         file.write(resp)
         file.close()
-        println('Program generated correctly')
+        println('Program generated correctly\nNow you can build using\n\tcc '+os.args[2]+'.c')
     }else{
         println('Wrong command!')
     }
