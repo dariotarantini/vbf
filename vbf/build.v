@@ -2,8 +2,7 @@ module main
 
 
 fn build(input []Instruction) string {
-    mut output := ''
-    output += '#include <stdio.h>\nint main(){char array[$data_size]={0};char *ptr=array;'
+    mut output := '#include <stdio.h>\nint main(){char array[$data_size]={0};char *ptr=array;'
 	for pc := 0; pc < (input.len); pc++ {
 		if input[pc].operator == op_inc_dp {
             output += '++ptr;'

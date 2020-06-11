@@ -31,13 +31,25 @@ fn main(){
         }
         c := compile(code)
         resp := build(c)
-        mut file := os.create('./'+os.args[2]+'.c') or {
+        filename := os.args[2].replace(".vbf", "")
+        mut file := os.create('./' + filename + '.c') or {
 		    println('Problem while creating the file')
             return
         }
         file.write(resp)
         file.close()
-        println('Program generated correctly\nNow you can build using\n\tcc '+os.args[2]+'.c')
+        
+        $if windows {
+            println('Program generated correctly\nNow you can build it.')
+        }
+        $if macos {
+            println('Program generated correctly\nNow you can build it.')
+        }
+        $if linux {
+            os.system("cc " + filename + ".c -o " + filename)
+            os.rm(filename + ".c")
+            println('Program generated correctly\nExcute with: ./' + filename)
+        }
     }else{
         println('Wrong command!')
     }
