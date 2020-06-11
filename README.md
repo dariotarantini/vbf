@@ -7,7 +7,7 @@ A brainfuck interpreter/compiler written in V.
 4. Add `vbf` to your path
 ## Usage
 ```
-vbf 0.5 - simple brainfuck interpreter/compiler
+vbf 1.0 - simple brainfuck interpreter/compiler
 Usage: vbf [options] [file]
 
 Options:

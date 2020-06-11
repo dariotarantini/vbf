@@ -16,7 +16,7 @@ const (
 
 fn main(){
     if os.args[1] == 'help' {
-        println('vbf 0.7 - simple brainfuck interpreter/compiler\nUsage: vbf [options] [file]\n\nOptions:\n - run\t\tRun a brainfuck script\n - build\tGenerate a C program from brainfuck that can be compiled\n - help\t\tShow this message')
+        println('vbf 1.0 - simple brainfuck interpreter/compiler\nUsage: vbf [options] [file]\n\nOptions:\n - run\t\tRun a brainfuck script\n - build\tGenerate a C program from brainfuck that can be compiled\n - help\t\tShow this message')
     }else if os.args[1] == 'run' {
         code := os.read_file(os.args[2]) or {
 		    println('File not found')
