@@ -1,6 +1,8 @@
 module main
 
+#include "stdio.h"
 
+fn C.scanf() int
 
 fn excute(input []Instruction){
 	mut data := [0].repeat(data_size)

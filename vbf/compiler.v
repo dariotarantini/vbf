@@ -3,8 +3,8 @@ module main
 fn compile(input string) []Instruction {
     mut pc := 0
     mut jmp_pc := 0
-    mut jmp_stack := []int
-    mut output := []Instruction
+    mut jmp_stack := []int{}
+    mut output := []Instruction{}
     for c in input {
         mch := c.str()
         if mch == '>' {
@@ -42,7 +42,7 @@ fn compile(input string) []Instruction {
     }
     if jmp_stack.len > 1 && jmp_stack[0] != 0 {
 	    println('Something went wrong...')
-        return [Instruction{}]
+        return []Instruction{}
 	}
     return output
 }

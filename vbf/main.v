@@ -2,7 +2,6 @@ module main
 
 import os
 
-
 const (
 	op_inc_dp = 0
 	op_dec_dp = 1
@@ -32,7 +31,7 @@ fn main(){
         }
         c := compile(code)
         resp := build(c)
-        file := os.create('./'+os.args[2]+'.c') or {
+        mut file := os.create('./'+os.args[2]+'.c') or {
 		    println('Problem while creating the file')
             return
         }
