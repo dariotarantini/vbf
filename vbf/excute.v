@@ -2,7 +2,7 @@ module main
 
 #include "stdio.h"
 
-fn C.scanf() int
+fn C.scanf(&char, voidptr) int
 
 fn excute(input []Instruction){
 	mut data := [0].repeat(data_size)
@@ -17,10 +17,10 @@ fn excute(input []Instruction){
         }else if input[pc].operator == op_dec_val {
             data[data_ptr]--
         }else if input[pc].operator == op_out {
-            C.printf('%c', data[data_ptr])
+            C.printf(c'%c', data[data_ptr])
         }else if input[pc].operator == op_in {
             cb := 0
-            C.scanf('%c', &cb)    
+            C.scanf(c'%c', &cb)    
             data[data_ptr] = cb
         }else if input[pc].operator == op_jmp_fwd {
 			if data[data_ptr] == 0 {

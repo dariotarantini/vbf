@@ -6,7 +6,7 @@ fn compile(input string) []Instruction {
     mut jmp_stack := []int{}
     mut output := []Instruction{}
     for c in input {
-        mch := c.str()
+        mch := c.ascii_str()
         if mch == '>' {
             output << Instruction{op_inc_dp, 0}
         }else if mch == '<' {
@@ -28,7 +28,7 @@ fn compile(input string) []Instruction {
                 return [Instruction{}]
             }
 			jmp_pc = jmp_stack[jmp_stack.len-1]
-            tmp_jmp_stack := jmp_stack
+            tmp_jmp_stack := jmp_stack.clone()
             jmp_stack = [0]
             for i := 0; i < (tmp_jmp_stack.len-1); i++{
                 jmp_stack << tmp_jmp_stack[i]

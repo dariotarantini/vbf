@@ -1,0 +1,4 @@
+## ignore generated executables
+examples/*
+!examples/*.vbf
+!examples/*/*.vbf
