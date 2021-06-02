@@ -36,7 +36,7 @@ fn main(){
 		    println('Problem while creating the file')
             return
         }
-        file.write(resp)
+        file.write_string(resp) ?
         file.close()
         
         $if windows {
@@ -47,7 +47,7 @@ fn main(){
         }
         $if linux {
             os.system("cc " + filename + ".c -o " + filename)
-            os.rm(filename + ".c")
+            os.rm(filename + ".c") ?
             println('Program generated correctly\nExcute with: ./' + filename)
         }
     }else{
